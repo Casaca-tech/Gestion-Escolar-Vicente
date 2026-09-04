@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ titulo }} - {{ subtitulo }}</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            max-width: 800px;
+            width: 100%;
+            padding: 60px 50px 40px;
+            text-align: center;
+            animation: fadeIn 0.8s ease-in;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .logo-icon {
+            font-size: 70px;
+            margin-bottom: 15px;
+        }
+        
+        .header h1 {
+            font-size: 3.2em;
+            color: #2d3748;
+            margin-bottom: 5px;
+        }
+        
+        .header h1 span {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        
+        .header .subtitle {
+            font-size: 1.4em;
+            color: #4a5568;
+            font-weight: 300;
+            margin-bottom: 25px;
+        }
+        
+        .divider {
+            width: 80px;
+            height: 3px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            margin: 0 auto 25px;
+            border-radius: 2px;
+        }
+        
+        .description {
+            color: #4a5568;
+            font-size: 1.1em;
+            line-height: 1.8;
+            margin-bottom: 35px;
+            padding: 0 10px;
+        }
+        
+        .features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 12px;
+            margin-bottom: 35px;
+        }
+        
+        .feature-item {
+            background: #f7fafc;
+            padding: 14px 16px;
+            border-radius: 10px;
+            border: 1px solid #e2e8f0;
+            font-size: 0.95em;
+            color: #2d3748;
+            transition: transform 0.3s, box-shadow 0.3s;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .feature-item:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(102, 126, 234, 0.15);
+            border-color: #667eea;
+        }
+        
+        .feature-item::before {
+            content: "✓";
+            color: #667eea;
+            font-weight: bold;
+            margin-right: 8px;
+            font-size: 1.1em;
+        }
+        
+        .admin-link {
+            display: inline-block;
+            background: #2d3748;
+            color: white;
+            padding: 12px 40px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.95em;
+            transition: background 0.3s, transform 0.3s;
+            margin-bottom: 30px;
+            border: none;
+            cursor: pointer;
+        }
+        
+        /* Estilos para el botón desactivado */
+        .admin-link:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+            background: #718096;
+            transform: none !important;
+            box-shadow: none !important;
+            pointer-events: none;
+        }
+        
+        .admin-link:hover {
+            background: #1a202c;
+            transform: translateY(-2px);
+        }
+        
+        .button-message {
+            color: #a0aec0;
+            font-size: 0.85em;
+            margin-top: 10px;
+            margin-bottom: 20px;
+        }
+        
+        .footer {
+            border-top: 1px solid #e2e8f0;
+            padding-top: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .footer-text {
+            color: #a0aec0;
+            font-size: 0.85em;
+        }
+        
+        @media (max-width: 600px) {
+            .container {
+                padding: 40px 25px 30px;
+            }
+            
+            .header h1 {
+                font-size: 2.4em;
+            }
+            
+            .header .subtitle {
+                font-size: 1.1em;
+            }
+            
+            .features {
+                grid-template-columns: 1fr 1fr;
+            }
+            
+            .feature-item {
+                font-size: 0.85em;
+                padding: 12px;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .features {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="logo-icon">🏫</div>
+        
+        <div class="header">
+            <h1><span>{{ titulo }}</span></h1>
+            <p class="subtitle">{{ subtitulo }}</p>
+        </div>
+        
+        <div class="divider"></div>
+        
+        <div class="description">
+            {{ descripcion }}
+        </div>
+        
+        <div class="features">
+            {% for caracteristica in caracteristicas %}
+                <div class="feature-item">{{ caracteristica }}</div>
+            {% endfor %}
+        </div>
+        
+        <!-- Botón de acceso desactivado -->
+        <button class="admin-link" disabled>
+            🔐 Acceder al sistema
+        </button>
+       
+       
+        <div class="footer">
+            <span class="footer-text">Sistema de Gestión Escolar</span>
+        </div>
+    </div>
+</body>
+</html>
