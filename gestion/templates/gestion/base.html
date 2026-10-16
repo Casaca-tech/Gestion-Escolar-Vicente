@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block titulo %}Gestión Escolar{% endblock %}</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        nav {
+            background: #2d3748;
+            color: white;
+            padding: 15px 30px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        nav .logo { font-size: 1.3em; font-weight: bold; }
+        nav .logo span { color: #667eea; }
+        nav a {
+            color: white;
+            text-decoration: none;
+            margin-left: 20px;
+            font-size: 0.95em;
+            transition: color 0.3s;
+        }
+        nav a:hover { color: #667eea; }
+        main {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: calc(100vh - 60px);
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <div class="logo">🏫 <span>Gestión Escolar</span></div>
+        <div>
+            <a href="/">Inicio</a>
+            <a href="/admin/">Admin</a>
+            <a href="/gestion/">API</a>
+        </div>
+    </nav>
+
+    <main>
+        {% block contenido %}
+        <p>Contenido por defecto.</p>
+        {% endblock %}
+    </main>
+</body>
+</html>

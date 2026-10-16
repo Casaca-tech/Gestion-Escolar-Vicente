@@ -1,0 +1,50 @@
+[
+  {
+    "model": "gestion.estado",
+    "pk": 1,
+    "fields": {
+      "nombre": "Activo",
+      "descripcion": "Estado normal de operación",
+      "es_excepcional": false,
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "gestion.estado",
+    "pk": 2,
+    "fields": {
+      "nombre": "Pendiente",
+      "descripcion": "Operación en espera de resolución",
+      "es_excepcional": false,
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "gestion.estado",
+    "pk": 3,
+    "fields": {
+      "nombre": "Excepcional",
+      "descripcion": "Situación excepcional que requiere atención",
+      "es_excepcional": true,
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "gestion.estado",
+    "pk": 4,
+    "fields": {
+      "nombre": "Cerrado",
+      "descripcion": "Operación finalizada",
+      "es_excepcional": false,
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  }
+]

@@ -1,0 +1,41 @@
+[
+  {
+    "model": "gestion.indicador",
+    "pk": 1,
+    "fields": {
+      "nombre": "Tasa de actividad",
+      "descripcion": "Porcentaje de usuarios activos en el período",
+      "formula": "(usuarios_activos / usuarios_totales) * 100",
+      "periodo": "Mensual",
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "gestion.indicador",
+    "pk": 2,
+    "fields": {
+      "nombre": "Utilización de recursos",
+      "descripcion": "Porcentaje de recursos utilizados",
+      "formula": "(recursos_usados / recursos_totales) * 100",
+      "periodo": "Mensual",
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  },
+  {
+    "model": "gestion.indicador",
+    "pk": 3,
+    "fields": {
+      "nombre": "Actividad reciente",
+      "descripcion": "Operaciones en los últimos 7 días",
+      "formula": "COUNT(operaciones WHERE fecha >= NOW() - 7 days)",
+      "periodo": "Semanal",
+      "habilitado": true,
+      "created_at": "2026-01-01T00:00:00",
+      "updated_at": "2026-01-01T00:00:00"
+    }
+  }
+]
