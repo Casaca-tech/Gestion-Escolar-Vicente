@@ -3,7 +3,7 @@ from django.db import models
 # ============================================================
 # CONSTANTES REUTILIZABLES
 # ============================================================
-int_habilitado = 1
+int_habilitado = "Habilitado"
 str_fecha_creacion = "Fecha Creación"
 str_fecha_actualizacion = "Fecha Actualización"
 str_codigo = "Código"

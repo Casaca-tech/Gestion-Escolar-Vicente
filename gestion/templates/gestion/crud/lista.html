@@ -1,0 +1,53 @@
+{% extends 'gestion/base.html' %}
+{% block titulo %}{{ titulo }}{% endblock %}
+{% block main_clase %}top{% endblock %}
+
+{% block contenido %}
+<div class="card">
+    <div class="card-head">
+        <h1>{{ titulo }}</h1>
+        <a class="btn btn-primary" href="{% url entidad|add:'_create' %}">+ Nuevo {{ singular }}</a>
+    </div>
+
+    <div class="tabla-wrap">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                {% for e in encabezados %}<th>{{ e }}</th>{% endfor %}
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for obj, valores in filas %}
+            <tr>
+                <td>{{ obj.pk }}</td>
+                {% for v in valores %}<td>{{ v }}</td>{% endfor %}
+                <td>
+                    <div class="acciones">
+                        <a class="btn btn-info" href="{% url entidad|add:'_detail' obj.pk %}">Ver</a>
+                        <a class="btn btn-warning" href="{% url entidad|add:'_update' obj.pk %}">Editar</a>
+                        <a class="btn btn-danger" href="{% url entidad|add:'_delete' obj.pk %}">Eliminar</a>
+                    </div>
+                </td>
+            </tr>
+            {% empty %}
+            <tr><td colspan="99" class="vacio">No hay registros. Cree el primero con el botón "Nuevo".</td></tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    </div>
+
+    {% if page_obj.has_other_pages %}
+    <div class="paginacion">
+        {% if page_obj.has_previous %}<a class="btn btn-secondary" href="?page={{ page_obj.previous_page_number }}">← Anterior</a>{% endif %}
+        <span>Página {{ page_obj.number }} de {{ page_obj.paginator.num_pages }}</span>
+        {% if page_obj.has_next %}<a class="btn btn-secondary" href="?page={{ page_obj.next_page_number }}">Siguiente →</a>{% endif %}
+    </div>
+    {% endif %}
+
+    <div style="margin-top: 20px;">
+        <a class="btn btn-secondary" href="{% url 'inicio' %}">← Volver al inicio</a>
+    </div>
+</div>
+{% endblock %}

@@ -25,6 +25,12 @@
         {% endfor %}
     </div>
 
+    <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 30px;">
+        {% for nombre, url in modulos %}
+            <a href="{% url url %}" style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 10px 22px; border-radius: 50px; text-decoration: none; font-weight: 600; font-size: 0.95em;">{{ nombre }}</a>
+        {% endfor %}
+    </div>
+
     <p style="color: #a0aec0; font-size: 0.85em; border-top: 1px solid #e2e8f0; padding-top: 20px;">
         Sistema de Gestión Escolar &copy; 2026
     </p>

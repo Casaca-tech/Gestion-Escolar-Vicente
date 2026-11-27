@@ -1,0 +1,24 @@
+{% extends 'gestion/base.html' %}
+{% block titulo %}Detalle de {{ singular }}{% endblock %}
+{% block main_clase %}top{% endblock %}
+
+{% block contenido %}
+<div class="card">
+    <div class="card-head">
+        <h1>Detalle de {{ singular }} #{{ object.pk }}</h1>
+    </div>
+
+    <dl class="detalle">
+        {% for etiqueta, valor in campos %}
+            <dt>{{ etiqueta }}</dt>
+            <dd>{{ valor }}</dd>
+        {% endfor %}
+    </dl>
+
+    <div class="acciones">
+        <a class="btn btn-warning" href="{% url entidad|add:'_update' object.pk %}">Editar</a>
+        <a class="btn btn-danger" href="{% url entidad|add:'_delete' object.pk %}">Eliminar</a>
+        <a class="btn btn-secondary" href="{% url entidad|add:'_list' %}">← Volver a {{ titulo }}</a>
+    </div>
+</div>
+{% endblock %}

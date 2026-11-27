@@ -12,44 +12,103 @@
             min-height: 100vh;
         }
         nav {
-            background: #2d3748;
-            color: white;
-            padding: 15px 30px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            background: #2d3748; color: white; padding: 15px 30px;
+            display: flex; justify-content: space-between; align-items: center;
+            flex-wrap: wrap; gap: 10px;
             box-shadow: 0 2px 10px rgba(0,0,0,0.2);
         }
         nav .logo { font-size: 1.3em; font-weight: bold; }
         nav .logo span { color: #667eea; }
-        nav a {
-            color: white;
-            text-decoration: none;
-            margin-left: 20px;
-            font-size: 0.95em;
-            transition: color 0.3s;
-        }
-        nav a:hover { color: #667eea; }
+        nav a { color: white; text-decoration: none; margin-left: 16px; font-size: 0.92em; transition: color 0.3s; }
+        nav a:hover { color: #a3bffa; }
+        .subnav { background: #1a202c; padding: 8px 30px; display: flex; flex-wrap: wrap; gap: 6px 18px; }
+        .subnav a { color: #cbd5e0; text-decoration: none; font-size: 0.88em; }
+        .subnav a:hover { color: white; }
         main {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            min-height: calc(100vh - 60px);
-            padding: 20px;
+            display: flex; justify-content: center; align-items: center;
+            min-height: calc(100vh - 100px); padding: 20px;
         }
+        main.top { align-items: flex-start; }
+
+        .mensajes { max-width: 1100px; margin: 15px auto 0; padding: 0 20px; }
+        .msg { padding: 12px 18px; border-radius: 8px; margin-bottom: 8px; font-weight: 500; }
+        .msg-success { background: #c6f6d5; color: #22543d; }
+        .msg-error { background: #fed7d7; color: #742a2a; }
+
+        .card {
+            background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            width: 100%; max-width: 1100px; padding: 30px;
+        }
+        .card-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 10px; margin-bottom: 20px; }
+        .card h1 { color: #2d3748; font-size: 1.6em; }
+
+        table { width: 100%; border-collapse: collapse; }
+        th, td { padding: 10px 12px; text-align: left; border-bottom: 1px solid #e2e8f0; font-size: 0.93em; }
+        th { background: #f7fafc; color: #4a5568; }
+        tr:hover td { background: #fafbff; }
+        .tabla-wrap { overflow-x: auto; }
+
+        .btn {
+            display: inline-block; padding: 8px 16px; border-radius: 8px; border: none;
+            text-decoration: none; font-size: 0.9em; font-weight: 600; cursor: pointer; color: white;
+        }
+        .btn-primary { background: #667eea; }
+        .btn-info { background: #3182ce; }
+        .btn-warning { background: #dd6b20; }
+        .btn-danger { background: #e53e3e; }
+        .btn-secondary { background: #718096; }
+        .btn:hover { opacity: 0.85; }
+        .acciones { display: flex; gap: 6px; flex-wrap: wrap; }
+
+        .campo { margin-bottom: 16px; }
+        .campo label { display: block; font-weight: 600; color: #4a5568; margin-bottom: 6px; }
+        .form-control, .form-select {
+            width: 100%; padding: 10px 12px; border: 1px solid #cbd5e0;
+            border-radius: 8px; font-size: 1em; font-family: inherit;
+        }
+        .form-control:focus, .form-select:focus { outline: 2px solid #667eea; border-color: #667eea; }
+        .form-check-input { width: 20px; height: 20px; }
+        .ayuda { color: #718096; font-size: 0.85em; margin-top: 4px; }
+        .errorlist { list-style: none; color: #c53030; font-size: 0.88em; margin-top: 4px; }
+
+        .detalle { display: grid; grid-template-columns: 220px 1fr; gap: 0; border: 1px solid #e2e8f0; border-radius: 10px; overflow: hidden; margin-bottom: 20px; }
+        .detalle dt { background: #f7fafc; padding: 12px 16px; font-weight: 600; color: #4a5568; border-bottom: 1px solid #e2e8f0; }
+        .detalle dd { padding: 12px 16px; border-bottom: 1px solid #e2e8f0; color: #2d3748; }
+
+        .paginacion { display: flex; justify-content: center; align-items: center; gap: 15px; margin-top: 20px; color: #4a5568; }
+        .vacio { text-align: center; color: #718096; padding: 30px; }
+        .aviso { background: #fffaf0; border-left: 4px solid #dd6b20; padding: 14px 18px; border-radius: 6px; margin-bottom: 20px; color: #744210; }
     </style>
 </head>
 <body>
     <nav>
         <div class="logo">🏫 <span>Gestión Escolar</span></div>
         <div>
-            <a href="/">Inicio</a>
+            <a href="{% url 'inicio' %}">Inicio</a>
             <a href="/admin/">Admin</a>
             <a href="/gestion/">API</a>
         </div>
     </nav>
+    <div class="subnav">
+        <a href="{% url 'perfil_list' %}">Perfiles</a>
+        <a href="{% url 'usuario_list' %}">Usuarios</a>
+        <a href="{% url 'recurso_list' %}">Recursos</a>
+        <a href="{% url 'dependencia_list' %}">Dependencias</a>
+        <a href="{% url 'operacion_list' %}">Operaciones</a>
+        <a href="{% url 'estado_list' %}">Estados</a>
+        <a href="{% url 'historial_list' %}">Historial</a>
+        <a href="{% url 'indicador_list' %}">Indicadores</a>
+    </div>
 
-    <main>
+    {% if messages %}
+    <div class="mensajes">
+        {% for m in messages %}
+            <div class="msg msg-{{ m.tags }}">{{ m }}</div>
+        {% endfor %}
+    </div>
+    {% endif %}
+
+    <main class="{% block main_clase %}{% endblock %}">
         {% block contenido %}
         <p>Contenido por defecto.</p>
         {% endblock %}

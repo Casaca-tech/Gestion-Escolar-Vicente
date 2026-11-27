@@ -1,0 +1,24 @@
+{% extends 'gestion/base.html' %}
+{% block titulo %}Eliminar {{ singular }}{% endblock %}
+{% block main_clase %}top{% endblock %}
+
+{% block contenido %}
+<div class="card" style="max-width: 600px;">
+    <div class="card-head">
+        <h1>Eliminar {{ singular }}</h1>
+    </div>
+
+    <div class="aviso">
+        ¿Está seguro de que desea eliminar <strong>{{ object }}</strong>?
+        Esta acción no se puede deshacer.
+    </div>
+
+    <form method="post">
+        {% csrf_token %}
+        <div class="acciones">
+            <button type="submit" class="btn btn-danger">Sí, eliminar</button>
+            <a class="btn btn-secondary" href="{% url entidad|add:'_detail' object.pk %}">Cancelar</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
